@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" id="gamescript" src="../ds_celebrity/js/gameplay_js.js" ></script>
+
+<script type="text/javascript">
+
+var nameList = [{{namelist|safe}}];//NOTE: THIS IS NOT SAFE	
+
+window.onload = function() {
+	console.log("banana");
+	startGame();
+};
+
+$(document).ready(function(){
+	//Keystroke for 'enter' adds name, not submit
+    $(document).bind('keypress',pressed);
+    
+	
+	//Link buttons
+	document.getElementById('tallyDone').onclick = tallyDone;
+	
+	document.getElementById('startTurn').onclick = showGameplay;
+	document.getElementById('nextRound').onclick = startGameplayWithNewRound;
+});
+</script>
+</head>
+<body>
+<div id='roundRules'>
+	<label id='roundRulesLabel'>Round 1: Say as many words as you like</label>
+</div>
+<div id='scoreboard'>
+	<div id='scores'>
+	
+	</div>
+	<br>
+	<button type="button" id="startTurn" >Start Turn</button>
+	<button type="button" id="nextRound" >Next Round</button>
+</div>
+<div id='gameplay'>
+	<label id="currentName"></label>
+	<br>
+	<label id="timer">0</label>
+</div>
+<div id='tally'>
+	<label id='roundLimitReached'>We're getting to the end of the round, we had to save some names for the other teams!</label>
+	<label>Please uncheck any names you don't get credit for:</label>
+	<div id='tallychecks'>
+		
+	</div>
+	<button type="button" id="tallyDone" >Done</button>
+</div>
+
+
+</body>
+</html>
