@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	
+-->
+<script type="text/javascript" id="gamescript" src="js/gameplay.js" ></script>
+
 <script type="text/javascript" id="js">
 var namesList = []//In-memory cache of entered names
 
@@ -20,9 +23,16 @@ function acceptName(e) {
 
 function submitNames(e) {
 	document.getElementById('hiddenNameData').value = JSON.stringify(namesList);
+	return false;
 }
 
+window.onload = function() {
+	console.log("banana");
+	document.getElementById('addName').onclick = acceptName;
+	document.getElementById('startGame').onclick = startGame;
+};
 
+/*
 function pressed(e)
 {
     if(e.keyCode === 13)
@@ -45,23 +55,24 @@ $(document).ready(function(){
 	
 	//Link add button
 	document.getElementById('addName').onclick = acceptName;
-});
+});*/
 
-</script
+</script>
 </head>
 <body>
 
 Please enter the names that we will use for the game
-<form id="nameForm" method="POST">
+<!--<form id="nameForm" method="POST">-->
 	<input id="celebName" autocomplete="off"/>
 	<input type="hidden" value="" name="hiddenNameData" id="hiddenNameData"/>
-</form>
-    <button type="button" id="addName">Add Name</button>
+<!--</form>-->
+    <button type="button" id="addName" >Add Name</button>
 	<br>
 	<label>Number of names added so far: </label>
 	<label id="numNames">0</label>
 	<br>
-	<button type="submit" id="startButton" form='nameForm'>Start Game</button> 
+	<!--<button type="submit" id="startButton" form='nameForm'>Start Game</button> -->
+	<button type="button" id="startGame">Start Game</button>
 
 
 </body>
