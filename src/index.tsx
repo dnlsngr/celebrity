@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { AppBar } from  'react-toolbox/lib/app_bar';
 
 export interface CelebrityRootProps {
   testProp: string
@@ -8,7 +9,9 @@ export interface CelebrityRootProps {
 export const CelebrityRoot = (props: CelebrityRootProps) => {
   const { testProp } = props;
   return (
-    <div>{`Here is a test prop: ${testProp}` }</div>
+    <AppBar>
+      <div>{`Here is a test prop: ${testProp}` }</div>
+    </AppBar>
   )
 }
 

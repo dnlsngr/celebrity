@@ -25,6 +25,22 @@ const config = {
     loaders: [
       { test: /\.tsx$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: "[name]--[local]--[hash:base64:8]", //Magic for react toolbox
+            }
+          },
+          "postcss-loader"
+        ]
+      }
     ],
   },
 
