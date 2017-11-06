@@ -1,20 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { AppBar } from  'react-toolbox/lib/app_bar';
+import { Provider } from 'redux-zero/react';
 
-export interface CelebrityRootProps {
-  testProp: string
-}
+import store from './store';
+import AppFrame from './pages/app-frame';
 
-export const CelebrityRoot = (props: CelebrityRootProps) => {
-  const { testProp } = props;
+export const CelebrityRoot = () => {
   return (
-    <AppBar>
-      <div>{`Here is a test prop: ${testProp}` }</div>
-    </AppBar>
+    <Provider store={store}>
+      <AppFrame />
+    </Provider>
   )
-}
+};
 
 ReactDOM.render(
-  <CelebrityRoot testProp="BANANA" />, document.getElementById('react-root')
-)
+  <CelebrityRoot />, document.getElementById('react-root')
+);

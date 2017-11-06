@@ -24,6 +24,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.tsx$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.css$/,
