@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'redux-zero/react';
 
 import store from './store';
-import AppFrame from './pages/app-frame';
+import AppFrame from 'pages/app-frame';
 
 export const CelebrityRoot = () => {
   return (

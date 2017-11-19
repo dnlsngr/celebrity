@@ -8,7 +8,7 @@ export interface GameSetupProps {
   currentNames: string[]
 }
 
-const GameSetup = (props: GameSetupProps) => {
+export const GameSetup = (props: GameSetupProps) => {
   const { currentPlayerNum, currentNames } = props;
 
   return (

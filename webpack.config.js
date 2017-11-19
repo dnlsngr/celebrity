@@ -18,7 +18,11 @@ const config = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    modules: [
+      path.resolve('src'),
+      path.resolve('node_modules')
+    ]
   },
 
   module: {
@@ -42,6 +46,15 @@ const config = {
           },
           "postcss-loader"
         ]
+      },
+      {
+        test: /\.js?$/,
+        loader: 'babel-loader',
+        include: /test/,
+        query: {
+          cacheDirectory: true,
+          presets: ['react', 'es2015']
+        }
       }
     ],
   },
