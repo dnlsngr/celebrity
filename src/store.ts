@@ -1,4 +1,6 @@
 import createStore from 'redux-zero';
+import { applyMiddleware } from 'redux-zero/middleware';
+import { connect } from 'redux-zero/devtools';
 
 export const GAME_SETUP_PAGE: string = 'GAME_SETUP_PAGE';
 
@@ -19,6 +21,7 @@ const initialState: CelebrityReduxState = {
     currentPlayerNum: 1
   }
 };
-const store = createStore(initialState);
+const middlewares: any = connect ? applyMiddleware(connect(initialState)): [];
+const store = createStore(initialState, middlewares);
 
 export default store;
