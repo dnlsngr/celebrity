@@ -3,7 +3,7 @@ import { connect } from 'redux-zero/react';
 
 import { CelebrityReduxState, GAME_SETUP_PAGE } from 'store';
 
-import GameSetup from './game-setup'
+import GameSetup from './game-setup/game-setup'
 
 export const AppFrame = (props: CelebrityReduxState) => {
   const { currentPage, gameSetup } = props;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { AppFrame } from 'pages/app-frame'
-import GameSetup from 'pages/game-setup'
+import GameSetup from 'pages/game-setup/game-setup'
 import { GAME_SETUP_PAGE } from 'store';
 
 describe('AppFrame', () => {
