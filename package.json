@@ -18,6 +18,8 @@
   "dependencies": {
     "@types/react": "^16.0.19",
     "@types/react-dom": "^16.0.2",
+    "@types/react-router": "^4.0.22",
+    "@types/react-router-dom": "^4.2.4",
     "antd": "^2.13.10",
     "awesome-typescript-loader": "^3.3.0",
     "css-loader": "^0.28.7",

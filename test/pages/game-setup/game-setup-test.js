@@ -5,7 +5,11 @@ import { GameSetup } from 'pages/game-setup/game-setup'
 describe('GameSetup', () => {
 
   it('should render GameSetup', () => {
-    const wrapper = shallow(<GameSetup currentPlayerNum={1} currentNames={[]}/>)
+    const gameSetupProps = {
+      currentPlayerNum : 1,
+      currentNames: []
+    }
+    const wrapper = shallow(<GameSetup gameSetup={gameSetupProps} />)
     expect(wrapper.find('[data-test="game-setup"]').length).to.equal(1)
   })
 
@@ -14,8 +18,11 @@ describe('GameSetup', () => {
     const newName = 'BANANA'
     const updatedValue = { target: { value: newName}}
 
-    const wrapper = mount(<GameSetup currentPlayerNum={1}
-                                     currentNames={[]}
+    const gameSetupProps = {
+      currentPlayerNum : 1,
+      currentNames: []
+    }
+    const wrapper = mount(<GameSetup gameSetup={gameSetupProps}
                                      addName={addNameSpy}/>)
     const nameInput = wrapper.find('[data-test="name-input"]').find('.ant-input')
 
@@ -31,8 +38,11 @@ describe('GameSetup', () => {
   it('should clear currentNames and increment player on click done', () => {
     const clearForNextPlayerSpy = sinon.spy()
 
-    const wrapper = mount(<GameSetup currentPlayerNum={1}
-                                     currentNames={['BANANA']}
+    const gameSetupProps = {
+      currentPlayerNum : 1,
+      currentNames: ['BANANA']
+    }
+    const wrapper = mount(<GameSetup gameSetup={gameSetupProps}
                                      clearForNextPlayer={clearForNextPlayerSpy}/>)
 
     const nextPlayerButton = wrapper.find('[data-test="next-player-button"]').find('.ant-btn')

@@ -1,15 +1,14 @@
-import * as React from 'react';
-import { Layout, Input, Button, Card } from 'antd';
-import { connect } from 'redux-zero/react';
+import * as React from 'react'
+import { Layout, Input, Button, Card } from 'antd'
+import { connect } from 'redux-zero/react'
+import { RouterProps } from 'react-router'
 
-import actions, { ActionPropTypes } from 'actions';
+import actions, { ActionPropTypes } from 'actions'
+import { CelebrityReduxState } from 'store'
 
 import * as styles from './game-setup.css'
 
-interface GameSetupProps extends ActionPropTypes {
-  currentPlayerNum: number
-  currentNames: string[]
-}
+type GameSetupProps = CelebrityReduxState & ActionPropTypes & RouterProps
 
 interface GameSetupState {
   celebrityName: string
@@ -24,6 +23,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
     this.handleUpdateName = this.handleUpdateName.bind(this)
     this.handleAddName = this.handleAddName.bind(this)
     this.handleNextPlayer = this.handleNextPlayer.bind(this)
+    this.handleBeginGame = this.handleBeginGame.bind(this)
   }
 
   handleUpdateName(e: any) {
@@ -42,8 +42,14 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
     this.setState({ celebrityName: '' }) // In case they had text in the input
   }
 
+  handleBeginGame(e: any) {
+    // We must do this programmatically instead of with a Link so that unit tests work
+    // https://github.com/ReactTraining/react-router/issues/4795
+    this.props.history.push('/gameplay')
+  }
+
   render() {
-    const { currentPlayerNum, currentNames } = this.props;
+    const { currentPlayerNum, currentNames } = this.props.gameSetup;
 
     return (
       <div data-test='game-setup'>
@@ -53,6 +59,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
           </Layout.Header>
           <Layout.Content>
             <div className={styles.setupContainer}>
+              <Button onClick={this.handleBeginGame}>Begin Game</Button>
               <h2>Please enter names of celebrities below. We recommend you enter 8 names.</h2>
               <div>
                 <Input type='text' data-test='name-input' value={this.state.celebrityName}
@@ -73,4 +80,5 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
   }
 }
 
-export default connect(() => {}, actions)(GameSetup);
+const mapToProps = ( state: CelebrityReduxState ) => state;
+export default connect(mapToProps, actions)(GameSetup);

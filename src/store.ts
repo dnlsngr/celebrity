@@ -3,6 +3,7 @@ import { applyMiddleware } from 'redux-zero/middleware';
 import { connect } from 'redux-zero/devtools';
 
 export const GAME_SETUP_PAGE: string = 'GAME_SETUP_PAGE';
+export const NEW_ROUND_PAGE: string = 'NEW_ROUND_PAGE';
 
 export interface CelebrityReduxState {
   currentPage: string
@@ -14,7 +15,7 @@ export interface CelebrityReduxState {
 };
 
 const initialState: CelebrityReduxState = {
-  currentPage : GAME_SETUP_PAGE,
+  currentPage : NEW_ROUND_PAGE,
   allNames: [],
   gameSetup: {
     currentNames: [],
