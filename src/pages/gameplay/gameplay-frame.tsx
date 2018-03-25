@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'redux-zero/react';
 
-import { CelebrityReduxState, NEW_ROUND_PAGE } from 'store';
+import { CelebrityReduxState, NEW_ROUND_PAGE, TURN_READY_PAGE } from 'store';
 import { RouteProps } from 'react-router-dom';
 
 import NewRound from './new-round'
+import ReadyForTurn from './ready-for-turn'
 
 type GameplayFrameProps = CelebrityReduxState & RouteProps
 
@@ -15,6 +16,9 @@ export const GameplayFrame = (props: GameplayFrameProps) => {
   switch(currentPage) {
     case NEW_ROUND_PAGE:
       currentPageComponent = (<NewRound/>)
+      break;
+    case TURN_READY_PAGE:
+      currentPageComponent = (<ReadyForTurn/>)
       break;
   }
 
