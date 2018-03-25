@@ -44,7 +44,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
 
   handleBeginGame(e: any) {
     this.props.finalizePlayers()
-    this.props.startRound(1)
+    this.props.beginRound(1)
     // We must do this programmatically instead of with a Link so that unit tests work
     // https://github.com/ReactTraining/react-router/issues/4795
     this.props.history.push('/gameplay')

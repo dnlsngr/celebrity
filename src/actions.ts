@@ -1,4 +1,4 @@
-import { CelebrityReduxState, NEW_ROUND_PAGE, TURN_READY_PAGE } from 'store'
+import { CelebrityReduxState, NEW_ROUND_PAGE, TURN_READY_PAGE, PLAY_ROUND } from 'store'
 
 const addName = (state: CelebrityReduxState, name: string) => ({ 
   ...state,
@@ -30,7 +30,7 @@ const finalizePlayers = (state: CelebrityReduxState) => {
 }
 
 // Each round: reset turn counter, add all names to this round
-const startRound = (state: CelebrityReduxState, roundNumber: number) => {
+const beginRound = (state: CelebrityReduxState, roundNumber: number) => {
   const namesMissedFromLastRound = state.roundInfo.remainingNamesForRound
   const newRemainingNames = state.allNames
   return {
@@ -50,20 +50,27 @@ const readyForTurn = (state: CelebrityReduxState) => ({
   currentPage: TURN_READY_PAGE
 })
 
+const beginTurn = (state: CelebrityReduxState) => ({
+  ...state,
+  currentPage: PLAY_ROUND
+})
+
 const actions = (_store: CelebrityReduxState) => ({
   addName: addName,
   clearForNextPlayer: clearForNextPlayer,
   finalizePlayers: finalizePlayers,
-  startRound: startRound,
-  readyForTurn: readyForTurn
+  beginRound: beginRound,
+  readyForTurn: readyForTurn,
+  beginTurn: beginTurn
 })
 
 export interface ActionPropTypes {
   addName: (name: string) => void,
   clearForNextPlayer: () => void,
   finalizePlayers: () => void,
-  startRound: (roundNumber: number) => void,
+  beginRound: (roundNumber: number) => void,
   readyForTurn: () => void
+  beginTurn: () => void
 }
 
 export default actions

@@ -4,11 +4,18 @@ import { connect } from 'redux-zero/devtools';
 
 export const NEW_ROUND_PAGE: string = 'NEW_ROUND_PAGE';
 export const TURN_READY_PAGE: string = 'TURN_READY_PAGE';
+export const PLAY_ROUND: string = 'PLAY_ROUND';
+
+export interface TeamScore {
+  teamNumber: number
+  score: number
+}
 
 export interface CelebrityReduxState {
   currentPage: string
   allNames: string[]
   numPlayers: number
+  scores: TeamScore[]
   gameSetup?: {
     currentNames?: string[]
     currentPlayerNum: number
@@ -34,7 +41,11 @@ const initialState: CelebrityReduxState = {
     turnNumber: 0,
     namesMissedFromLastRound: [],
     remainingNamesForRound: []
-  }
+  },
+  scores: [
+    { teamNumber: 1, score: 0},
+    { teamNumber: 2, score: 0}
+  ],
 };
 const middlewares: any = connect ? applyMiddleware(connect(initialState)): [];
 const store = createStore(initialState, middlewares);
