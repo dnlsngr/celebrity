@@ -5,25 +5,13 @@ import { RouterProps } from 'react-router'
 
 import actions, { ActionPropTypes } from 'actions';
 import { CelebrityReduxState, TeamScore } from 'store'
+import { getRoundMessage } from './gameplay-helpers'
 
 type ReadyForTurnProps = CelebrityReduxState & ActionPropTypes & RouterProps
 
 export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
   constructor(props: ReadyForTurnProps){
     super(props);
-  }
-
-  getRoundMessage(roundNumber: number) {
-    switch (roundNumber) {
-      case 1:
-        return 'Round 1: Say as many clues as you like';
-      case 2:
-        return 'Round 2: One-word clues only';
-      case 3:
-        return 'Round 3: No talking--act your clues out!';
-      default:
-        console.error(`Invalid round number ${roundNumber}`)
-    }
   }
 
   getScores(scores: TeamScore[]) {
@@ -46,7 +34,7 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
       <div data-test="ready-for-turn">
         <Layout>
           <Layout.Header>
-            <h1 data-test="ready-for-turn-header">{this.getRoundMessage(roundInfo.roundNumber)}</h1>
+            <h1 data-test="ready-for-turn-header">{getRoundMessage(roundInfo.roundNumber)}</h1>
           </Layout.Header>
           <Layout.Content>
             {this.getScores(scores)}

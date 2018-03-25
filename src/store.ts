@@ -26,6 +26,14 @@ export interface CelebrityReduxState {
     namesMissedFromLastRound: string[]
     remainingNamesForRound: string[]
   }
+  turnInfo: {
+    namesForTurn: string[]
+    currentName: string
+    correctThisTurn: number
+    skippedThisTurn: number
+    illegalThisTurn: number
+    secondsRemaining: number
+  }
 };
 
 const initialState: CelebrityReduxState = {
@@ -46,6 +54,14 @@ const initialState: CelebrityReduxState = {
     { teamNumber: 1, score: 0},
     { teamNumber: 2, score: 0}
   ],
+  turnInfo: {
+    namesForTurn: [],
+    currentName: '',
+    correctThisTurn: 0,
+    skippedThisTurn: 0,
+    illegalThisTurn: 0,
+    secondsRemaining: 0
+  }
 };
 const middlewares: any = connect ? applyMiddleware(connect(initialState)): [];
 const store = createStore(initialState, middlewares);

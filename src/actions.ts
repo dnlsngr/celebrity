@@ -1,4 +1,11 @@
 import { CelebrityReduxState, NEW_ROUND_PAGE, TURN_READY_PAGE, PLAY_ROUND } from 'store'
+import store from './store';
+
+const TURN_LENGTH_SECONDS = 60
+
+const CORRECT = 'CORRECT'
+const SKIP = 'SKIP'
+const ILLEGAL = 'ILLEGAL'
 
 const addName = (state: CelebrityReduxState, name: string) => ({ 
   ...state,
@@ -50,10 +57,56 @@ const readyForTurn = (state: CelebrityReduxState) => ({
   currentPage: TURN_READY_PAGE
 })
 
-const beginTurn = (state: CelebrityReduxState) => ({
-  ...state,
-  currentPage: PLAY_ROUND
-})
+const tick = (state: CelebrityReduxState) => {
+  const newSecondsRemaining = state.turnInfo.secondsRemaining - 1
+  if (newSecondsRemaining > 0) {
+    setTimeout(store.setState.bind(this, tick), 1000)
+  }
+  return {
+    ...state,
+    turnInfo: {
+      ...state.turnInfo,
+      secondsRemaining: newSecondsRemaining
+    }
+  }
+}
+
+const beginTurn = (state: CelebrityReduxState) => {
+  const namesForTurn = state.roundInfo.remainingNamesForRound
+  const currentName = namesForTurn.pop()
+  setTimeout(store.setState.bind(this, tick), 1000)
+  return {
+    ...state,
+    currentPage: PLAY_ROUND,
+    turnInfo: {
+      namesForTurn: namesForTurn,
+      currentName: currentName,
+      correctThisTurn: 0,
+      skippedThisTurn: 0,
+      illegalThisTurn: 0,
+      secondsRemaining: TURN_LENGTH_SECONDS
+    }
+  }
+}
+
+const processName = (result: string, state: CelebrityReduxState) => {
+  const namesForTurn = state.roundInfo.remainingNamesForRound
+  const currentName = namesForTurn.pop()
+  const correctThisTurn = state.turnInfo.correctThisTurn
+  const skippedThisTurn = state.turnInfo.skippedThisTurn
+  const illegalThisTurn = state.turnInfo.illegalThisTurn
+  return {
+    ...state,
+    turnInfo: {
+      ...state.turnInfo,
+      namesForTurn: namesForTurn,
+      currentName: currentName,
+      correctThisTurn: result === CORRECT ? correctThisTurn + 1 : correctThisTurn,
+      skippedThisTurn: result === SKIP ? skippedThisTurn + 1 : skippedThisTurn,
+      illegalThisTurn: result === ILLEGAL ? illegalThisTurn + 1 : illegalThisTurn
+    }
+  }
+}
 
 const actions = (_store: CelebrityReduxState) => ({
   addName: addName,
@@ -61,7 +114,10 @@ const actions = (_store: CelebrityReduxState) => ({
   finalizePlayers: finalizePlayers,
   beginRound: beginRound,
   readyForTurn: readyForTurn,
-  beginTurn: beginTurn
+  beginTurn: beginTurn,
+  nameCorrect: processName.bind(this, CORRECT),
+  nameSkipped: processName.bind(this, SKIP),
+  illegalClue: processName.bind(this, ILLEGAL)
 })
 
 export interface ActionPropTypes {
@@ -71,6 +127,9 @@ export interface ActionPropTypes {
   beginRound: (roundNumber: number) => void,
   readyForTurn: () => void
   beginTurn: () => void
+  nameCorrect: () => void
+  nameSkipped: () => void
+  illegalClue: () => void
 }
 
 export default actions
