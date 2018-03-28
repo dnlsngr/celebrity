@@ -4,18 +4,17 @@ import { connect } from 'redux-zero/devtools';
 
 export const NEW_ROUND_PAGE: string = 'NEW_ROUND_PAGE';
 export const TURN_READY_PAGE: string = 'TURN_READY_PAGE';
-export const PLAY_ROUND: string = 'PLAY_ROUND';
-
-export interface TeamScore {
-  teamNumber: number
-  score: number
-}
+export const PLAY_ROUND_PAGE: string = 'PLAY_ROUND_PAGE';
+export const GAME_OVER_PAGE: string = 'GAME_OVER_PAGE';
 
 export interface CelebrityReduxState {
   currentPage: string
   allNames: string[]
   numPlayers: number
-  scores: TeamScore[]
+  scores: {
+    team1: number
+    team2: number
+  }
   gameSetup?: {
     currentNames?: string[]
     currentPlayerNum: number
@@ -28,6 +27,7 @@ export interface CelebrityReduxState {
   }
   turnInfo: {
     namesForTurn: string[]
+    skippedOrIllegalNames: string[]
     currentName: string
     correctThisTurn: number
     skippedThisTurn: number
@@ -36,7 +36,7 @@ export interface CelebrityReduxState {
   }
 };
 
-const initialState: CelebrityReduxState = {
+export const initialState: CelebrityReduxState = {
   currentPage : NEW_ROUND_PAGE,
   allNames: [],
   numPlayers: 1,
@@ -50,12 +50,13 @@ const initialState: CelebrityReduxState = {
     namesMissedFromLastRound: [],
     remainingNamesForRound: []
   },
-  scores: [
-    { teamNumber: 1, score: 0},
-    { teamNumber: 2, score: 0}
-  ],
+  scores: {
+    team1: 0,
+    team2: 0,
+  },
   turnInfo: {
     namesForTurn: [],
+    skippedOrIllegalNames: [],
     currentName: '',
     correctThisTurn: 0,
     skippedThisTurn: 0,

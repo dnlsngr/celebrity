@@ -4,7 +4,7 @@ import { GameplayFrame } from 'pages/gameplay/gameplay-frame'
 import NewRound from 'pages/gameplay/new-round'
 import ReadyForTurn from 'pages/gameplay/ready-for-turn'
 import PlayRound from 'pages/gameplay/play-round'
-import { NEW_ROUND_PAGE, TURN_READY_PAGE, PLAY_ROUND } from 'store'
+import { NEW_ROUND_PAGE, TURN_READY_PAGE, PLAY_ROUND_PAGE } from 'store'
 
 describe('GameplayFrame', () => {
 
@@ -19,7 +19,7 @@ describe('GameplayFrame', () => {
   })
   
   it('should render PlayRound when specified', () => {
-    const wrapper = shallow(<GameplayFrame currentPage={PLAY_ROUND} />)
+    const wrapper = shallow(<GameplayFrame currentPage={PLAY_ROUND_PAGE} />)
     expect(wrapper.find(PlayRound).length).to.equal(1)
   })
 })

@@ -16,6 +16,22 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
 
   render() {
     const { turnInfo, roundInfo } = this.props
+
+    const answerButtons = (
+      <div>
+        <Button data-test="correct-button" onClick={this.props.nameCorrect}>Correct</Button>
+        <Button data-test="skip-button" onClick={this.props.nameSkipped}>Skip</Button>
+        <Button data-test="illegal-clue-button" onClick={this.props.illegalClue}>Illegal Clue</Button>
+      </div>
+    )
+
+    const noNamesLeftButton = (
+      <div>
+        <Card>Oops, no more names left!</Card>
+        <Button data-test="end-turn-button" onClick={this.props.endTurn}>End Turn</Button>
+      </div>
+    )
+
     return (
       <div data-test="play-round">
         <Layout>
@@ -27,9 +43,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
             <Card>
               {`Seconds left: ${turnInfo.secondsRemaining}`}
             </Card>
-            <Button data-test="correct-button" onClick={this.props.nameCorrect}>Correct</Button>
-            <Button data-test="skip-button" onClick={this.props.nameSkipped}>Skip</Button>
-            <Button data-test="illegal-clue-button" onClick={this.props.illegalClue}>Illegal Clue</Button>
+            {turnInfo.currentName ? answerButtons : noNamesLeftButton}
             <div>
               {"correct: " + turnInfo.correctThisTurn}
               <br/>

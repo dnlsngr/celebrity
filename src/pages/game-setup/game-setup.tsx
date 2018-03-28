@@ -15,6 +15,8 @@ interface GameSetupState {
 }
 
 export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
+  private nameInput: Input
+
   constructor(props: GameSetupProps){
     super(props);
     // We keep state of form elements in component state
@@ -39,6 +41,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
 
   handleNextPlayer(e: any) {
     this.props.clearForNextPlayer()
+    this.nameInput.focus()
     this.setState({ celebrityName: '' }) // In case they had text in the input
   }
 
@@ -65,6 +68,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
               <h2>Please enter names of celebrities below. We recommend you enter 8 names.</h2>
               <div>
                 <Input type='text' data-test='name-input' value={this.state.celebrityName}
+                  ref={(input) => { this.nameInput = input; }}
                   onChange={this.handleUpdateName} onPressEnter={this.handleAddName} />
                 <Button type='primary' onClick={this.handleAddName} data-test="add-name-button">Add</Button>
               </div>
