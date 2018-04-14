@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Layout, Button, Card } from 'antd'
-import { connect } from 'redux-zero/react';
-import { RouterProps } from 'react-router'
+import * as React from "react";
+import { Layout, Button, Card } from "antd";
+import { connect } from "redux-zero/react";
+import { RouterProps } from "react-router";
 
-import actions, { ActionPropTypes } from 'actions';
-import { CelebrityReduxState } from 'store'
-import { getRoundMessage } from './gameplay-helpers'
+import actions, { ActionPropTypes } from "actions";
+import { CelebrityReduxState } from "store";
+import { getRoundMessage } from "./gameplay-helpers";
 
-type ReadyForTurnProps = CelebrityReduxState & ActionPropTypes & RouterProps
+type ReadyForTurnProps = CelebrityReduxState & ActionPropTypes & RouterProps;
 
 export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
-  constructor(props: ReadyForTurnProps){
+  constructor(props: ReadyForTurnProps) {
     super(props);
   }
 
@@ -24,26 +24,33 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
           {`Team 2: ${score2}`}
         </div>
       </Card>
-    )
+    );
   }
 
   render() {
-    const { roundInfo, scores } = this.props
+    const { roundInfo, scores } = this.props;
     return (
       <div data-test="ready-for-turn">
         <Layout>
           <Layout.Header>
-            <h1 data-test="ready-for-turn-header">{getRoundMessage(roundInfo.roundNumber)}</h1>
+            <h1 data-test="ready-for-turn-header">
+              {getRoundMessage(roundInfo.roundNumber)}
+            </h1>
           </Layout.Header>
           <Layout.Content>
             {this.getScores(scores.team1, scores.team2)}
-            <Button data-test="begin-turn-button" onClick={this.props.beginTurn}>Begin Turn</Button>
+            <Button
+              data-test="begin-turn-button"
+              onClick={this.props.beginTurn}
+            >
+              Begin Turn
+            </Button>
           </Layout.Content>
         </Layout>
       </div>
-    )
+    );
   }
 }
 
-const mapToProps = ( state: CelebrityReduxState ) => state;
+const mapToProps = (state: CelebrityReduxState) => state;
 export default connect(mapToProps, actions)(ReadyForTurn);
