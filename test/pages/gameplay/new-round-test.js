@@ -51,7 +51,7 @@ describe("NewRound", () => {
     );
     const beginRoundButton = wrapper
       .find('[data-test="begin-round-button"]')
-      .find(".ant-btn");
+      .find("button");
     beginRoundButton.simulate("click");
     expect(readyForTurnStub.calledOnce).to.be.true;
   });

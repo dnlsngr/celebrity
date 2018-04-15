@@ -29,7 +29,7 @@ describe("ReadyForTurn", () => {
     );
     wrapper
       .find('[data-test="begin-turn-button"]')
-      .find(".ant-btn")
+      .find("button")
       .simulate("click");
     expect(beginTurnStub.calledOnce).to.be.true;
   });

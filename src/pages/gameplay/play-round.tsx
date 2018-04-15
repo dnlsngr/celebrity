@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout, Button, Card } from "antd";
+import { AppBar, Button, Card } from "material-ui";
 import { connect } from "redux-zero/react";
 import { RouterProps } from "react-router";
 
@@ -45,25 +45,21 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
 
     return (
       <div data-test="play-round">
-        <Layout>
-          <Layout.Header>
-            <h1 data-test="play-round-header">
-              {getRoundMessage(roundInfo.roundNumber)}
-            </h1>
-          </Layout.Header>
-          <Layout.Content>
-            <h2>{turnInfo.currentName}</h2>
-            <Card>{`Seconds left: ${turnInfo.secondsRemaining}`}</Card>
-            {turnInfo.currentName ? answerButtons : noNamesLeftButton}
-            <div>
-              {"correct: " + turnInfo.correctThisTurn}
-              <br />
-              {"skipped: " + turnInfo.skippedThisTurn}
-              <br />
-              {"correct: " + turnInfo.illegalThisTurn}
-            </div>
-          </Layout.Content>
-        </Layout>
+        <AppBar position="static">
+          <h1 data-test="play-round-header">
+            {getRoundMessage(roundInfo.roundNumber)}
+          </h1>
+        </AppBar>
+        <h2>{turnInfo.currentName}</h2>
+        <Card>{`Seconds left: ${turnInfo.secondsRemaining}`}</Card>
+        {turnInfo.currentName ? answerButtons : noNamesLeftButton}
+        <div>
+          {"correct: " + turnInfo.correctThisTurn}
+          <br />
+          {"skipped: " + turnInfo.skippedThisTurn}
+          <br />
+          {"correct: " + turnInfo.illegalThisTurn}
+        </div>
       </div>
     );
   }

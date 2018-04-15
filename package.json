@@ -8,12 +8,11 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "node_modules/.bin/mocha-webpack -r jsdom-global/register -r ./test/setup-tests.js --recursive"
+    "test":
+      "node_modules/.bin/mocha-webpack -r jsdom-global/register -r ./test/setup-tests.js --recursive"
   },
   "babel": {
-    "presets": [
-      "es2015"
-    ]
+    "presets": ["es2015"]
   },
   "dependencies": {
     "@types/react": "^16.0.19",

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout, Input, Button, Card } from "antd";
+import { Input, Button, Card, AppBar, Grid } from "material-ui";
 import { connect } from "redux-zero/react";
 import { RouterProps } from "react-router";
 
@@ -15,7 +15,7 @@ interface GameSetupState {
 }
 
 export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
-  private nameInput: Input;
+  private nameInput;
 
   constructor(props: GameSetupProps) {
     super(props);
@@ -58,52 +58,48 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
 
     return (
       <div data-test="game-setup">
-        <Layout>
-          <Layout.Header>
-            <h1
-              className={styles.setupHeader}
-            >{`Welcome player ${currentPlayerNum}!`}</h1>
-          </Layout.Header>
-          <Layout.Content>
-            <div className={styles.setupContainer}>
-              <Button onClick={this.handleBeginGame}>Begin Game</Button>
-              <h2>
-                Please enter names of celebrities below. We recommend you enter
-                8 names.
-              </h2>
-              <div>
-                <Input
-                  type="text"
-                  data-test="name-input"
-                  value={this.state.celebrityName}
-                  ref={input => {
-                    this.nameInput = input;
-                  }}
-                  onChange={this.handleUpdateName}
-                  onPressEnter={this.handleAddName}
-                />
-                <Button
-                  type="primary"
-                  onClick={this.handleAddName}
-                  data-test="add-name-button"
-                >
-                  Add
-                </Button>
-              </div>
-              <Button
-                onClick={this.handleNextPlayer}
-                data-test="next-player-button"
-              >
-                Done! Next Player
-              </Button>
-              {currentNames.map((name: string, index: number) => (
-                <div key={index}>
-                  <Card key={index}>{name}</Card>
-                </div>
-              ))}
+        <AppBar position="static">
+          <h1
+            className={styles.setupHeader}
+          >{`Welcome player ${currentPlayerNum}!`}</h1>
+        </AppBar>
+        <div className={styles.setupContainer}>
+          <Button onClick={this.handleBeginGame}>Begin Game</Button>
+          <h2>
+            Please enter names of celebrities below. We recommend you enter 8
+            names.
+          </h2>
+          <div>
+            <Input
+              type="text"
+              data-test="name-input"
+              value={this.state.celebrityName}
+              inputRef={input => {
+                this.nameInput = input;
+              }}
+              onChange={this.handleUpdateName}
+              // onPressEnter={this.handleAddName}
+            />
+            <Button
+              type="secondary"
+              onClick={this.handleAddName}
+              data-test="add-name-button"
+            >
+              Add
+            </Button>
+          </div>
+          <Button
+            onClick={this.handleNextPlayer}
+            data-test="next-player-button"
+          >
+            Done! Next Player
+          </Button>
+          {currentNames.map((name: string, index: number) => (
+            <div key={index}>
+              <Card key={index}>{name}</Card>
             </div>
-          </Layout.Content>
-        </Layout>
+          ))}
+        </div>
       </div>
     );
   }

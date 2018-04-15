@@ -24,16 +24,14 @@ describe("GameSetup", () => {
     const wrapper = mount(
       <GameSetup gameSetup={gameSetupProps} addName={addNameSpy} />
     );
-    const nameInput = wrapper
-      .find('[data-test="name-input"]')
-      .find(".ant-input");
+    const nameInput = wrapper.find('[data-test="name-input"]').find("input");
 
     nameInput.simulate("change", updatedValue);
     expect(wrapper.state("celebrityName")).to.be.equal(newName);
 
     const addNameButton = wrapper
       .find('[data-test="add-name-button"]')
-      .find(".ant-btn");
+      .find("button");
     addNameButton.simulate("click");
     expect(addNameSpy.calledWith(newName)).to.be.true;
     expect(wrapper.state("celebrityName")).to.be.equal("");
@@ -55,7 +53,7 @@ describe("GameSetup", () => {
 
     const nextPlayerButton = wrapper
       .find('[data-test="next-player-button"]')
-      .find(".ant-btn");
+      .find("button");
     nextPlayerButton.simulate("click");
     expect(clearForNextPlayerSpy.calledWith()).to.be.true;
     expect(wrapper.state("celebrityName")).to.be.equal("");

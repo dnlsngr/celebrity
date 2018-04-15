@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout, Button, Card } from "antd";
+import { AppBar, Button, Card } from "material-ui";
 import { connect } from "redux-zero/react";
 import { RouterProps } from "react-router";
 
@@ -40,17 +40,13 @@ export class NewRound extends React.Component<NewRoundProps, {}> {
         : null;
     return (
       <div data-test="new-round">
-        <Layout>
-          <Layout.Header>
-            <h1 data-test="round-start-header">{`Let's start round ${roundNumber}`}</h1>
-          </Layout.Header>
-          <Layout.Content>
-            {namesMissed}
-            <Button data-test="begin-round-button" onClick={this.beginRound}>
-              Begin Round
-            </Button>
-          </Layout.Content>
-        </Layout>
+        <AppBar position="static">
+          <h1 data-test="round-start-header">{`Let's start round ${roundNumber}`}</h1>
+        </AppBar>
+        {namesMissed}
+        <Button data-test="begin-round-button" onClick={this.beginRound}>
+          Begin Round
+        </Button>
       </div>
     );
   }

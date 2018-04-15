@@ -32,7 +32,7 @@ describe("PlayRound", () => {
     );
     wrapper
       .find('[data-test="correct-button"]')
-      .find(".ant-btn")
+      .find("button")
       .simulate("click");
     expect(nameCorrectStub.calledOnce).to.be.true;
   });
@@ -48,7 +48,7 @@ describe("PlayRound", () => {
     );
     wrapper
       .find('[data-test="skip-button"]')
-      .find(".ant-btn")
+      .find("button")
       .simulate("click");
     expect(nameSkippedStub.calledOnce).to.be.true;
   });
@@ -64,7 +64,7 @@ describe("PlayRound", () => {
     );
     wrapper
       .find('[data-test="illegal-clue-button"]')
-      .find(".ant-btn")
+      .find("button")
       .simulate("click");
     expect(illegalClueStub.calledOnce).to.be.true;
   });
