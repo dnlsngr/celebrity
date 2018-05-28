@@ -15,7 +15,7 @@ describe("ReadyForTurn", () => {
     );
     expect(wrapper.find('[data-test="ready-for-turn"]').length).to.equal(1);
     expect(wrapper.find('[data-test="rules"]').length).to.equal(0);
-    expect(wrapper.find('[data-test="team-score"]').length).to.equal(0);
+    expect(wrapper.find('[data-test="scores-container"]').length).to.equal(0);
   });
 
   it("should render ReadyForTurn with scores with rules on second turn", () => {
@@ -31,7 +31,7 @@ describe("ReadyForTurn", () => {
     );
     expect(wrapper.find('[data-test="ready-for-turn"]').length).to.equal(1);
     expect(wrapper.find('[data-test="rules"]').length).to.equal(1);
-    expect(wrapper.find('[data-test="team-score"]').length).to.equal(2);
+    expect(wrapper.find('[data-test="scores-container"]').length).to.equal(1);
   });
 
   it("should render ReadyForTurn with scores without rules on second round first turn", () => {
@@ -47,7 +47,7 @@ describe("ReadyForTurn", () => {
     );
     expect(wrapper.find('[data-test="ready-for-turn"]').length).to.equal(1);
     expect(wrapper.find('[data-test="rules"]').length).to.equal(0);
-    expect(wrapper.find('[data-test="team-score"]').length).to.equal(2);
+    expect(wrapper.find('[data-test="scores-container"]').length).to.equal(1);
   });
 
   it("should call beginTurn when button is clicked", () => {

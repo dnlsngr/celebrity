@@ -6,6 +6,7 @@ import { RouterProps } from "react-router";
 import actions, { ActionPropTypes } from "actions";
 import { CelebrityReduxState } from "store";
 import { getRoundMessage, getRoundRules } from "../gameplay-helpers";
+import { Scores } from "../shared-components/scores";
 
 import * as globalStyles from "../../global-styles.css";
 import * as styles from "./ready-for-turn.css";
@@ -57,8 +58,11 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
         </AppBar>
         <div className={styles.readyForTurnContainer}>
           {showScores ? (
-            <div className={styles.resultsContainer}>
-              {this.getScores(scores.team1, scores.team2)}
+            <div
+              data-test="scores-container"
+              className={styles.resultsContainer}
+            >
+              <Scores team1={scores.team1} team2={scores.team2} />
               {this.getLastTurnResults()}
             </div>
           ) : null}

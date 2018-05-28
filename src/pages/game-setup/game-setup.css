@@ -21,10 +21,6 @@
   grid-column: 2 / span 1;
 }
 
-.namesEntered {
-  margin: 10px 0;
-}
-
 .nameCard {
   grid-column: 1 / span 1;
   margin: 5px 0;

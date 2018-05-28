@@ -7,15 +7,17 @@ export const TURN_READY_PAGE: string = "TURN_READY_PAGE";
 export const PLAY_ROUND_PAGE: string = "PLAY_ROUND_PAGE";
 export const GAME_OVER_PAGE: string = "GAME_OVER_PAGE";
 
+export interface ScoresState {
+  team1: number;
+  team2: number;
+}
+
 export interface CelebrityReduxState {
   currentPage: string;
   allNames: string[];
   numPlayers: number;
   allowSkip: boolean;
-  scores: {
-    team1: number;
-    team2: number;
-  };
+  scores: ScoresState;
   gameSetup?: {
     currentNames?: string[];
     currentPlayerNum: number;
