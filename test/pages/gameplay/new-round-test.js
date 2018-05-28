@@ -10,9 +10,9 @@ describe("NewRound", () => {
     };
     const wrapper = shallow(<NewRound roundInfo={roundInfoProps} />);
     expect(wrapper.find('[data-test="new-round"]').length).to.equal(1);
-    expect(wrapper.find('[data-test="round-start-header"]').text()).to.equal(
-      "Let's start round 1"
-    );
+    expect(
+      wrapper.find('[data-test="round-start-header"]').text()
+    ).to.have.string("Round 1");
   });
 
   it("should show no names missed if none are provided", () => {

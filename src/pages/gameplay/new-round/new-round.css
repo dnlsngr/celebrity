@@ -1,0 +1,26 @@
+.newRoundContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.namesMissed {
+  grid-column: 2 / span 1;
+  margin: 5px 0;
+  font-family: "Verdana";
+}
+
+.namesMissedCard {
+  width: 50%;
+}
+
+.roundRules {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 30px;
+  grid-column: 2 / span 1;
+}
+
+.beginRoundButton {
+  grid-column: 2 / span 1;
+  justify-self: center;
+}

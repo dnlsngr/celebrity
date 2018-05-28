@@ -7,6 +7,7 @@ import actions, { ActionPropTypes } from "actions";
 import { CelebrityReduxState } from "store";
 
 import * as styles from "./game-setup.css";
+import * as globalStyles from "../global-styles.css";
 
 type GameSetupProps = CelebrityReduxState & ActionPropTypes & RouterProps;
 
@@ -24,6 +25,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
 
     this.handleUpdateName = this.handleUpdateName.bind(this);
     this.handleAddName = this.handleAddName.bind(this);
+    this.handleKeyPressOnInput = this.handleKeyPressOnInput.bind(this);
     this.handleNextPlayer = this.handleNextPlayer.bind(this);
     this.handleBeginGame = this.handleBeginGame.bind(this);
   }
@@ -36,6 +38,13 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
     if (this.state.celebrityName.length > 0) {
       this.props.addName(this.state.celebrityName);
       this.setState({ celebrityName: "" });
+    }
+  }
+
+  handleKeyPressOnInput(e: any) {
+    if (e.key === "Enter") {
+      const dummyAddNameEvent = {};
+      this.handleAddName(dummyAddNameEvent);
     }
   }
 
@@ -56,49 +65,74 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
   render() {
     const { currentPlayerNum, currentNames } = this.props.gameSetup;
 
+    const namesEntered = (
+      <div className={styles.nameCard}>
+        {currentNames.map((name: string, index: number) => (
+          <div key={index} className={styles.nameCard}>
+            <Card key={index}>{`${index + 1}. ${name}`}</Card>
+          </div>
+        ))}
+      </div>
+    );
+
     return (
       <div data-test="game-setup">
         <AppBar position="static">
           <h1
-            className={styles.setupHeader}
+            className={globalStyles.headerText}
           >{`Welcome player ${currentPlayerNum}!`}</h1>
         </AppBar>
         <div className={styles.setupContainer}>
-          <Button onClick={this.handleBeginGame}>Begin Game</Button>
-          <h2>
+          <h2 className={styles.welcomeInstructions}>
             Please enter names of celebrities below. We recommend you enter 8
             names.
           </h2>
-          <div>
+          <div className={styles.nameInputContainer}>
             <Input
+              className={styles.nameInput}
               type="text"
               data-test="name-input"
               value={this.state.celebrityName}
+              placeholder={"Enter Celebrity Name Here"}
               inputRef={input => {
                 this.nameInput = input;
               }}
               onChange={this.handleUpdateName}
-              // onPressEnter={this.handleAddName}
+              onKeyPress={this.handleKeyPressOnInput}
             />
+          </div>
+          <div className={styles.nameInputAddButton}>
             <Button
-              type="secondary"
+              variant="raised"
               onClick={this.handleAddName}
               data-test="add-name-button"
             >
               Add
             </Button>
           </div>
-          <Button
-            onClick={this.handleNextPlayer}
-            data-test="next-player-button"
-          >
-            Done! Next Player
-          </Button>
-          {currentNames.map((name: string, index: number) => (
-            <div key={index}>
-              <Card key={index}>{name}</Card>
-            </div>
-          ))}
+          {namesEntered}
+          <div className={styles.nextPlayer}>
+            <Button
+              variant="raised"
+              disabled={currentNames.length === 0}
+              onClick={this.handleNextPlayer}
+              data-test="next-player-button"
+            >
+              Ready for next player to enter names
+            </Button>
+          </div>
+          <div className={styles.beginGame}>
+            <Button
+              variant="raised"
+              disabled={
+                currentPlayerNum === 1 ||
+                (currentPlayerNum === 2 && currentNames.length === 0)
+              }
+              onClick={this.handleBeginGame}
+            >
+              All players have entered names
+            </Button>
+          </div>
         </div>
       </div>
     );

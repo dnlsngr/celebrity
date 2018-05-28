@@ -5,7 +5,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import store from "./store";
 import GameplayFrame from "pages/gameplay/gameplay-frame";
-import GameSetup from "pages/game-setup/game-setup";
+import GameSetup from "pages/game-setup";
 
 export const CelebrityRoot = () => {
   return (

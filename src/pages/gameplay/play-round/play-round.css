@@ -1,0 +1,40 @@
+.playRoundContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.currentName {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 56px;
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
+
+.timer {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 48px;
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
+
+.answerButtons {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 48px;
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
+
+.noMoreNames {
+  margin: 20px 0;
+  font-family: "Verdana";
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
+
+.endTurnButton {
+  margin: 20px 0;
+  justify-self: center;
+}

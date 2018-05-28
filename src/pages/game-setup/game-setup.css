@@ -1,8 +1,45 @@
-.setupHeader {
-  padding: 0px;
-  position: relative;
-}
-
 .setupContainer {
   padding: 0 4em;
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.welcomeInstructions {
+  grid-column: span 2;
+}
+
+.nameInputContainer {
+  grid-column: span 1;
+  margin-right: 20px;
+}
+
+.nameInput {
+  width: 100%;
+}
+
+.nameInputAddButton {
+  grid-column: 2 / span 1;
+}
+
+.namesEntered {
+  margin: 10px 0;
+}
+
+.nameCard {
+  grid-column: 1 / span 1;
+  margin: 5px 0;
+  font-family: "Verdana";
+}
+
+.nameInput {
+  width: 100%;
+}
+
+.nextPlayer {
+  margin: 20px 0 10px;
+  grid-column: 1 / span 2;
+}
+
+.beginGame {
+  grid-column: 1 / span 2;
 }

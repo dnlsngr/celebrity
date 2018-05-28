@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { GameSetup } from "pages/game-setup/game-setup";
+import { GameSetup } from "pages/game-setup";
 
 describe("GameSetup", () => {
   it("should render GameSetup", () => {

@@ -1,0 +1,32 @@
+.readyForTurnContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.resultsContainer {
+  font-family: "Verdana";
+  grid-column: 2 / span 1;
+}
+
+.resultsCard {
+  margin: 20px 0;
+}
+
+.setupInstructions {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 30px;
+  grid-column: 2 / span 1;
+}
+
+.setupSubInstructions {
+  margin: 20px 0;
+  font-family: "Verdana";
+  font-size: 25px;
+  grid-column: 2 / span 1;
+}
+
+.beginTurnButton {
+  grid-column: 2 / span 1;
+  justify-self: center;
+}
