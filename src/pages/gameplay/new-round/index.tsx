@@ -27,7 +27,10 @@ export class NewRound extends React.Component<NewRoundProps, {}> {
   generateNamesMissed(names: string[]) {
     return (
       <div data-test="names-missed" className={styles.namesMissed}>
-        <h2>Here are the names you missed</h2>
+        <div className={styles.endOfRoundText}>
+          We're almost out of names, so we're starting a new round! Read the
+          names you missed aloud so everyone knows all names in the hat.
+        </div>
         {names.map((name: string, index: number) => (
           <Card key={index} className={styles.namesMissedCard}>
             {name}

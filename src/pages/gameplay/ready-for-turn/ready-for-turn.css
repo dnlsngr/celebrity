@@ -19,13 +19,6 @@
   grid-column: 2 / span 1;
 }
 
-.setupSubInstructions {
-  margin: 20px 0;
-  font-family: "Verdana";
-  font-size: 25px;
-  grid-column: 2 / span 1;
-}
-
 .beginTurnButton {
   grid-column: 2 / span 1;
   justify-self: center;

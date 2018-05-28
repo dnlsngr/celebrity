@@ -11,6 +11,7 @@ export interface CelebrityReduxState {
   currentPage: string;
   allNames: string[];
   numPlayers: number;
+  allowSkip: boolean;
   scores: {
     team1: number;
     team2: number;
@@ -40,6 +41,7 @@ export const initialState: CelebrityReduxState = {
   currentPage: NEW_ROUND_PAGE,
   allNames: [],
   numPlayers: 1,
+  allowSkip: false,
   gameSetup: {
     currentNames: [],
     currentPlayerNum: 1

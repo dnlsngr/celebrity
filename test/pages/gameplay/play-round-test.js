@@ -41,6 +41,7 @@ describe("PlayRound", () => {
     const nameSkippedStub = sinon.stub();
     const wrapper = mount(
       <PlayRound
+        allowSkip={true}
         roundInfo={roundInfo}
         turnInfo={turnInfo}
         nameSkipped={nameSkippedStub}

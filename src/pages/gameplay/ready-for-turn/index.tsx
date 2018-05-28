@@ -64,14 +64,7 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
           ) : null}
           <div className={styles.setupInstructions}>
             {`Team ${roundInfo.turnNumber % 2 + 1} is up! The cluegiver for that
-          team should set the computer up so that it faces away from their
-          teammates`}
-          </div>
-          <div className={styles.setupSubInstructions}>
-            <i>
-              Make sure someone from the opposing team is looking over their
-              shoulder for illegal clues!
-            </i>
+          team should set the computer up so that nobody can see it.`}
           </div>
           {showRules ? (
             <div data-test="rules" className={styles.setupInstructions}>

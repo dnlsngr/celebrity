@@ -139,7 +139,8 @@ const _tick = (state: CelebrityReduxState) => {
 
 const endTurn = (state: CelebrityReduxState) => {
   clearTimeout(timeoutIdentifier);
-  const isEndOfTurnset = state.roundInfo.turnNumber % state.numPlayers === 0;
+  const isEndOfTurnset =
+    state.roundInfo.turnNumber % state.numPlayers === NUM_TEAMS - 1;
   const remainingNamesForRound = state.turnInfo.namesForTurn.concat(
     state.turnInfo.skippedOrIllegalNames
   );

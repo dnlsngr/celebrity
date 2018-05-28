@@ -18,7 +18,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
   }
 
   render() {
-    const { turnInfo, roundInfo } = this.props;
+    const { turnInfo, roundInfo, allowSkip } = this.props;
 
     const answerButtons = (
       <div className={styles.answerButtons}>
@@ -29,13 +29,15 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
         >
           Correct
         </Button>
-        <Button
-          variant="raised"
-          data-test="skip-button"
-          onClick={this.props.nameSkipped}
-        >
-          Skip
-        </Button>
+        {allowSkip ? (
+          <Button
+            variant="raised"
+            data-test="skip-button"
+            onClick={this.props.nameSkipped}
+          >
+            Skip
+          </Button>
+        ) : null}
         <Button
           variant="raised"
           data-test="illegal-clue-button"
