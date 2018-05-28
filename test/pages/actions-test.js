@@ -52,7 +52,7 @@ describe("actions", () => {
   describe("beginRound", () => {
     it("should update namesMissed, reset turn counter, and set current page", () => {
       const state = _.clone(initialState);
-      const roundNumber = 2;
+      const roundNumber = 0;
       const namesFromLastRound = "name1";
       const allNames = ["name1", "name2"];
       state.roundInfo.remainingNamesForRound = namesFromLastRound;
@@ -61,7 +61,7 @@ describe("actions", () => {
       const result = underTest.beginRound(state, roundNumber);
       expect(result.currentPage).to.equal(NEW_ROUND_PAGE);
       expect(result.roundInfo.roundNumber).to.equal(roundNumber);
-      expect(result.roundInfo.turnNumber).to.equal(0);
+      expect(result.roundInfo.turnNumber).to.equal(-1);
       expect(result.roundInfo.namesMissedFromLastRound).to.equal(
         namesFromLastRound
       );

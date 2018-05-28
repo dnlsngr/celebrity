@@ -57,7 +57,7 @@ const beginRound = (state: CelebrityReduxState, roundNumber: number) => {
     currentPage: NEW_ROUND_PAGE,
     roundInfo: {
       roundNumber: roundNumber,
-      turnNumber: 0,
+      turnNumber: -1,
       namesMissedFromLastRound: namesMissedFromLastRound,
       remainingNamesForRound: newRemainingNames
     }
@@ -158,7 +158,7 @@ const endTurn = (state: CelebrityReduxState) => {
     remainingNamesForRound.length <= END_OF_ROUND_THRESHOLD
   ) {
     const roundNumber = updatedScoreState.roundInfo.roundNumber;
-    if (roundNumber < 3) {
+    if (roundNumber < 2) {
       const nextRoundNum = roundNumber + 1;
       return beginRound(updatedScoreState, nextRoundNum);
     } else {

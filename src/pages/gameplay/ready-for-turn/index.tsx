@@ -42,8 +42,8 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
   render() {
     const { roundInfo, scores } = this.props;
 
-    const showScores = roundInfo.roundNumber > 1 || roundInfo.turnNumber > 1;
-    const showRules = roundInfo.turnNumber > 1;
+    const showScores = roundInfo.roundNumber > 0 || roundInfo.turnNumber > 0;
+    const showRules = roundInfo.turnNumber > 0;
 
     return (
       <div data-test="ready-for-turn">
@@ -63,8 +63,7 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
             </div>
           ) : null}
           <div className={styles.setupInstructions}>
-            {`Team ${(roundInfo.turnNumber - 1) % 2 +
-              1} is up! The cluegiver for that
+            {`Team ${roundInfo.turnNumber % 2 + 1} is up! The cluegiver for that
           team should set the computer up so that it faces away from their
           teammates`}
           </div>

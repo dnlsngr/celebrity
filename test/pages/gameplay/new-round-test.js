@@ -5,7 +5,7 @@ import { NewRound } from "pages/gameplay/new-round";
 describe("NewRound", () => {
   it("should render NewRound with proper roundNumber", () => {
     const roundInfoProps = {
-      roundNumber: 1,
+      roundNumber: 0,
       namesMissedFromLastRound: []
     };
     const wrapper = shallow(<NewRound roundInfo={roundInfoProps} />);
@@ -17,7 +17,7 @@ describe("NewRound", () => {
 
   it("should show no names missed if none are provided", () => {
     const roundInfoProps = {
-      roundNumber: 1,
+      roundNumber: 0,
       namesMissedFromLastRound: []
     };
     const wrapper = shallow(<NewRound roundInfo={roundInfoProps} />);
@@ -27,7 +27,7 @@ describe("NewRound", () => {
   it("should show names missed if they are provided", () => {
     const NAME_MISSED = "NAME_MISSED";
     const roundInfoProps = {
-      roundNumber: 1,
+      roundNumber: 0,
       namesMissedFromLastRound: [NAME_MISSED]
     };
     const wrapper = shallow(<NewRound roundInfo={roundInfoProps} />);
@@ -43,7 +43,7 @@ describe("NewRound", () => {
   it("should start turn when clicking Begin Round", () => {
     const readyForTurnStub = sinon.stub();
     const roundInfoProps = {
-      roundNumber: 1,
+      roundNumber: 0,
       namesMissedFromLastRound: []
     };
     const wrapper = mount(

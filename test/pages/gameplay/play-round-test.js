@@ -4,7 +4,7 @@ import { PlayRound } from "pages/gameplay/play-round";
 
 describe("PlayRound", () => {
   const roundInfo = {
-    roundNumber: 1
+    roundNumber: 0
   };
   const turnInfo = {
     currentName: "Harrison Ford",

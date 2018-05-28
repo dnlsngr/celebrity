@@ -7,8 +7,8 @@ describe("ReadyForTurn", () => {
 
   it("should render ReadyForTurn without scores without rules on first turn first round", () => {
     const roundInfo = {
-      roundNumber: 1,
-      turnNumber: 1
+      roundNumber: 0,
+      turnNumber: 0
     };
     const wrapper = shallow(
       <ReadyForTurn scores={scores} roundInfo={roundInfo} />
@@ -20,8 +20,8 @@ describe("ReadyForTurn", () => {
 
   it("should render ReadyForTurn with scores with rules on second turn", () => {
     const roundInfo = {
-      roundNumber: 1,
-      turnNumber: 2
+      roundNumber: 0,
+      turnNumber: 1
     };
     const turnInfo = {
       correctThisTurn: 1
@@ -36,8 +36,8 @@ describe("ReadyForTurn", () => {
 
   it("should render ReadyForTurn with scores without rules on second round first turn", () => {
     const roundInfo = {
-      roundNumber: 2,
-      turnNumber: 1
+      roundNumber: 1,
+      turnNumber: 0
     };
     const turnInfo = {
       correctThisTurn: 1
@@ -52,7 +52,7 @@ describe("ReadyForTurn", () => {
 
   it("should call beginTurn when button is clicked", () => {
     const roundInfo = {
-      roundNumber: 1
+      roundNumber: 0
     };
     const beginTurnStub = sinon.stub();
     const wrapper = mount(
