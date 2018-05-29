@@ -27,6 +27,17 @@ const addName = (state: CelebrityReduxState, name: string) => ({
   }
 });
 
+const deleteName = (state: CelebrityReduxState, indexToRemove: number) => ({
+  ...state,
+  allNames: state.allNames.filter((val, ind) => indexToRemove !== ind),
+  gameSetup: {
+    ...state.gameSetup,
+    currentNames: state.gameSetup.currentNames.filter(
+      (val, ind) => indexToRemove !== ind
+    )
+  }
+});
+
 const clearForNextPlayer = (state: CelebrityReduxState) => ({
   ...state,
   gameSetup: {
@@ -205,6 +216,7 @@ const gameOver = (state: CelebrityReduxState) => {
 
 const actions = (_store: CelebrityReduxState) => ({
   addName: addName,
+  deleteName: deleteName,
   clearForNextPlayer: clearForNextPlayer,
   finalizePlayers: finalizePlayers,
   beginRound: beginRound,
@@ -219,6 +231,7 @@ const actions = (_store: CelebrityReduxState) => ({
 
 export interface ActionPropTypes {
   addName: (name: string) => void;
+  deleteName: (index: number) => void;
   clearForNextPlayer: () => void;
   finalizePlayers: () => void;
   beginRound: (roundNumber: number) => void;

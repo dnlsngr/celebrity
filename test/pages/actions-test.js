@@ -21,6 +21,17 @@ describe("actions", () => {
     });
   });
 
+  describe("deleteName", () => {
+    it("should delete a name by index from allNames and gameSetup.currentNames", () => {
+      const state = _.clone(initialState);
+      state.allNames = ["Keep", "Remove", "Keep"];
+      state.gameSetup.currentNames = ["Keep", "Remove", "Keep"];
+      const result = underTest.deleteName(state, 1);
+      expect(result.allNames).to.deep.equal(["Keep", "Keep"]);
+      expect(result.gameSetup.currentNames).to.deep.equal(["Keep", "Keep"]);
+    });
+  });
+
   describe("clearForNextPlayer", () => {
     it("should clear current names and increment currentPlayerNum", () => {
       const state = _.clone(initialState);

@@ -4,5 +4,6 @@ export const nameInputContainer: string;
 export const nameInput: string;
 export const nameInputAddButton: string;
 export const nameCard: string;
+export const deleteButton: string;
 export const nextPlayer: string;
 export const beginGame: string;

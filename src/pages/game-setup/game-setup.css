@@ -27,8 +27,11 @@
   font-family: "Verdana";
 }
 
-.nameInput {
-  width: 100%;
+.deleteButton {
+  margin: 5px;
+  font-size: 8px;
+  cursor: pointer;
+  float: right;
 }
 
 .nextPlayer {

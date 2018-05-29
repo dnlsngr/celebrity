@@ -25,6 +25,7 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
 
     this.handleUpdateName = this.handleUpdateName.bind(this);
     this.handleAddName = this.handleAddName.bind(this);
+    this.handleDeleteName = this.handleDeleteName.bind(this);
     this.handleKeyPressOnInput = this.handleKeyPressOnInput.bind(this);
     this.handleNextPlayer = this.handleNextPlayer.bind(this);
     this.handleBeginGame = this.handleBeginGame.bind(this);
@@ -39,6 +40,10 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
       this.props.addName(this.state.celebrityName);
       this.setState({ celebrityName: "" });
     }
+  }
+
+  handleDeleteName(index: number) {
+    this.props.deleteName(index);
   }
 
   handleKeyPressOnInput(e: any) {
@@ -69,7 +74,15 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
       <div className={styles.nameCard}>
         {currentNames.map((name: string, index: number) => (
           <div key={index} className={styles.nameCard}>
-            <Card key={index}>{`${index + 1}. ${name}`}</Card>
+            <Card key={index}>
+              {`${index + 1}. ${name}`}
+              <span
+                className={styles.deleteButton}
+                onClick={() => this.handleDeleteName(index)}
+              >
+                X
+              </span>
+            </Card>
           </div>
         ))}
       </div>
