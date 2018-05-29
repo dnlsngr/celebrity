@@ -1,0 +1,8 @@
+.gameOverContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.scoresContainer {
+  grid-column: 2 / span 1;
+}
