@@ -24,7 +24,8 @@ describe("ReadyForTurn", () => {
       turnNumber: 1
     };
     const turnInfo = {
-      correctThisTurn: 1
+      correctThisTurn: 1,
+      namesForTurn: ["banana"]
     };
     const wrapper = shallow(
       <ReadyForTurn scores={scores} roundInfo={roundInfo} turnInfo={turnInfo} />
@@ -40,7 +41,8 @@ describe("ReadyForTurn", () => {
       turnNumber: 0
     };
     const turnInfo = {
-      correctThisTurn: 1
+      correctThisTurn: 1,
+      namesForTurn: ["banana"]
     };
     const wrapper = shallow(
       <ReadyForTurn scores={scores} roundInfo={roundInfo} turnInfo={turnInfo} />
