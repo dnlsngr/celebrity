@@ -67,7 +67,7 @@ const config = {
   plugins: [HtmlWebpackPluginConfig],
 
   devServer: {
-    port: 3000, // most common port
+    port: 8080, // most common port
     contentBase: "./dist",
     inline: true
   }
