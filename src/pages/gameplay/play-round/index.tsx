@@ -1,7 +1,8 @@
 import * as React from "react";
-import { AppBar, Button, Card } from "material-ui";
+import { AppBar, Button, Card, Input } from "material-ui";
 import { connect } from "redux-zero/react";
 import { RouterProps } from "react-router";
+import key from "keymaster";
 
 import actions, { ActionPropTypes } from "actions";
 import { CelebrityReduxState } from "store";
@@ -15,6 +16,26 @@ type PlayRoundProps = CelebrityReduxState & ActionPropTypes & RouterProps;
 export class PlayRound extends React.Component<PlayRoundProps, {}> {
   constructor(props: PlayRoundProps) {
     super(props);
+    this.onPressSpace = this.onPressSpace.bind(this);
+    this.onPressKeyX = this.onPressKeyX.bind(this);
+  }
+
+  componentDidMount() {
+    key("space", this.onPressSpace);
+    key("x", this.onPressKeyX);
+  }
+
+  componentWillUnmount() {
+    key.unbind("space", this.onPressSpace);
+    key.unbind("x", this.onPressKeyX);
+  }
+
+  onPressSpace() {
+    this.props.nameCorrect();
+  }
+
+  onPressKeyX() {
+    this.props.illegalClue();
   }
 
   render() {
@@ -27,7 +48,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
           data-test="correct-button"
           onClick={this.props.nameCorrect}
         >
-          Correct
+          Correct (Spacebar)
         </Button>
         {allowSkip ? (
           <Button
@@ -43,7 +64,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
           data-test="illegal-clue-button"
           onClick={this.props.illegalClue}
         >
-          Illegal Clue
+          Illegal Clue (Right-Arrow)
         </Button>
       </div>
     );

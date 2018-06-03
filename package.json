@@ -8,11 +8,12 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test":
-      "node_modules/.bin/mocha-webpack -r jsdom-global/register -r ./test/setup-tests.js --recursive"
+    "test": "node_modules/.bin/mocha-webpack -r jsdom-global/register -r ./test/setup-tests.js --recursive"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   },
   "dependencies": {
     "@types/react": "^16.0.19",
@@ -24,6 +25,7 @@
     "css-loader": "^0.28.7",
     "eslint": "^4.10.0",
     "html-webpack-plugin": "^2.30.1",
+    "keymaster": "^1.6.2",
     "material-ui": "^1.0.0-beta.41",
     "path": "^0.12.7",
     "postcss": "^6.0.14",
