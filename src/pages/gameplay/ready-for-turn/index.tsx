@@ -32,12 +32,12 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
   }
 
   getLastTurnResults() {
-    const { turnInfo } = this.props;
+    const { turnInfo, roundInfo } = this.props;
     return (
       <Card className={styles.resultsCard}>
         <div key="1">{`Correct last turn: ${turnInfo.correctThisTurn}`}</div>
         <div key="2">{`Names left in the hat: ${
-          turnInfo.namesForTurn.length
+          roundInfo.remainingNamesForRound.length
         }`}</div>
       </Card>
     );

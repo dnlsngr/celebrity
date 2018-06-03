@@ -21,11 +21,11 @@ describe("ReadyForTurn", () => {
   it("should render ReadyForTurn with scores with rules on second turn", () => {
     const roundInfo = {
       roundNumber: 0,
-      turnNumber: 1
+      turnNumber: 1,
+      remainingNamesForRound: ["banana"]
     };
     const turnInfo = {
-      correctThisTurn: 1,
-      namesForTurn: ["banana"]
+      correctThisTurn: 1
     };
     const wrapper = shallow(
       <ReadyForTurn scores={scores} roundInfo={roundInfo} turnInfo={turnInfo} />
@@ -38,11 +38,11 @@ describe("ReadyForTurn", () => {
   it("should render ReadyForTurn with scores without rules on second round first turn", () => {
     const roundInfo = {
       roundNumber: 1,
-      turnNumber: 0
+      turnNumber: 0,
+      remainingNamesForRound: ["banana"]
     };
     const turnInfo = {
-      correctThisTurn: 1,
-      namesForTurn: ["banana"]
+      correctThisTurn: 1
     };
     const wrapper = shallow(
       <ReadyForTurn scores={scores} roundInfo={roundInfo} turnInfo={turnInfo} />
