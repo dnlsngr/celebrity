@@ -71,10 +71,9 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
 
     const noNamesLeftButton = (
       <div className={styles.noMoreNames}>
-        <div>Oops, no more names left!</div>
+        <span className={styles.noMoreNamesMsg}>Oops, no more names left!</span>
         <Button
           variant="raised"
-          className={styles.endTurnButton}
           data-test="end-turn-button"
           onClick={this.props.endTurn}
         >
@@ -90,7 +89,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
             {getRoundMessage(roundInfo.roundNumber)}
           </h1>
         </AppBar>
-        <div className={styles.playRoundContainer}>
+        <div className={globalStyles.gameplayContainer}>
           <div className={styles.currentName}>{turnInfo.currentName}</div>
           <Card className={styles.timer}>{turnInfo.secondsRemaining}</Card>
           {turnInfo.currentName ? answerButtons : noNamesLeftButton}

@@ -97,8 +97,8 @@ export class GameSetup extends React.Component<GameSetupProps, GameSetupState> {
         </AppBar>
         <div className={styles.setupContainer}>
           <h2 className={styles.welcomeInstructions}>
-            Please enter names of celebrities below. We recommend you enter 8
-            names.
+            {`Player ${currentPlayerNum}, please enter names of celebrities below. We recommend you enter 8
+            names.`}
           </h2>
           <div className={styles.nameInputContainer}>
             <Input

@@ -24,7 +24,6 @@
 .nameCard {
   grid-column: 1 / span 1;
   margin: 5px 0;
-  font-family: "Verdana";
 }
 
 .deleteButton {

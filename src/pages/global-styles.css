@@ -1,3 +1,8 @@
 .headerText {
   margin: 20px;
 }
+
+.gameplayContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}

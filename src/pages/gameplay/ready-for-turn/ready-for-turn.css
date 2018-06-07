@@ -1,10 +1,4 @@
-.readyForTurnContainer {
-  display: grid;
-  grid-template-columns: 20% 60% 20%;
-}
-
 .resultsContainer {
-  font-family: "Verdana";
   grid-column: 2 / span 1;
 }
 
@@ -14,7 +8,6 @@
 
 .setupInstructions {
   margin: 20px 0;
-  font-family: "Verdana";
   font-size: 30px;
   grid-column: 2 / span 1;
 }

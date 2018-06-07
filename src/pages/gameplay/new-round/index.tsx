@@ -27,7 +27,7 @@ export class NewRound extends React.Component<NewRoundProps, {}> {
   generateNamesMissed(names: string[]) {
     return (
       <div data-test="names-missed" className={styles.namesMissed}>
-        <div className={styles.endOfRoundText}>
+        <div className={styles.explanatoryText}>
           We're almost out of names, so we're starting a new round! Read the
           names you missed aloud so everyone knows all names in the hat.
         </div>
@@ -57,9 +57,11 @@ export class NewRound extends React.Component<NewRoundProps, {}> {
             {getRoundMessage(roundNumber)}
           </h1>
         </AppBar>
-        <div className={styles.newRoundContainer}>
+        <div className={globalStyles.gameplayContainer}>
           {namesMissed}
-          <div className={styles.roundRules}>{getRoundRules(roundNumber)}</div>
+          <div className={styles.explanatoryText}>
+            {getRoundRules(roundNumber)}
+          </div>
           <Button
             variant="raised"
             data-test="begin-round-button"

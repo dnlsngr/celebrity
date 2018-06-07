@@ -7,11 +7,13 @@ import store from "./store";
 import GameplayFrame from "pages/gameplay/gameplay-frame";
 import GameSetup from "pages/game-setup";
 
+import * as styles from "./page-styles.css";
+
 export const CelebrityRoot = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div>
+        <div className={styles.page}>
           <Route exact path="/" component={GameSetup} />
           <Route path="/gameplay" component={GameplayFrame} />
         </div>

@@ -37,7 +37,7 @@ export class GameOver extends React.Component<GameOverProps, {}> {
             {`Game Over: ${winningTeamMsg}`}
           </h1>
         </AppBar>
-        <div className={styles.gameOverContainer}>
+        <div className={globalStyles.gameplayContainer}>
           <div className={styles.scoresContainer}>
             <Scores team1={scores.team1} team2={scores.team2} />
           </div>

@@ -8,7 +8,7 @@ import {
 } from "store";
 import store from "./store";
 
-const TURN_LENGTH_SECONDS = 10;
+const TURN_LENGTH_SECONDS = 60;
 const NUM_TEAMS = 2;
 const END_OF_ROUND_THRESHOLD = 8;
 

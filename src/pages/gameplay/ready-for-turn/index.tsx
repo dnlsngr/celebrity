@@ -48,6 +48,7 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
 
     const showScores = roundInfo.roundNumber > 0 || roundInfo.turnNumber > 0;
     const showRules = roundInfo.turnNumber > 0;
+    const teamNum = roundInfo.turnNumber % 2 + 1;
 
     return (
       <div data-test="ready-for-turn">
@@ -59,7 +60,7 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
             {getRoundMessage(roundInfo.roundNumber)}
           </h1>
         </AppBar>
-        <div className={styles.readyForTurnContainer}>
+        <div className={globalStyles.gameplayContainer}>
           {showScores ? (
             <div
               data-test="scores-container"
@@ -70,8 +71,9 @@ export class ReadyForTurn extends React.Component<ReadyForTurnProps, {}> {
             </div>
           ) : null}
           <div className={styles.setupInstructions}>
-            {`Team ${roundInfo.turnNumber % 2 + 1} is up! The cluegiver for that
-          team should set the computer up so that nobody can see it.`}
+            {`Team ${teamNum} is up! The cluegiver for that team should 
+            set the computer up so that nobody can see it. Only players
+            from Team ${teamNum} can guess.`}
           </div>
           {showRules ? (
             <div data-test="rules" className={styles.setupInstructions}>
