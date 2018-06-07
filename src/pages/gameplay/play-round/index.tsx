@@ -64,7 +64,7 @@ export class PlayRound extends React.Component<PlayRoundProps, {}> {
           data-test="illegal-clue-button"
           onClick={this.props.illegalClue}
         >
-          Illegal Clue (Right-Arrow)
+          Illegal Clue (X)
         </Button>
       </div>
     );
