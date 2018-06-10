@@ -60,6 +60,10 @@ const config = {
           cacheDirectory: true,
           presets: ["react", "es2015"]
         }
+      },
+      {
+        test: /\.ico$/,
+        loader: "file-loader?name=[name].[ext]" // <-- retain original file name for static assets
       }
     ]
   },

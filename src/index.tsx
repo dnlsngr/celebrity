@@ -1,3 +1,5 @@
+require("./favicon.ico");
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "redux-zero/react";
